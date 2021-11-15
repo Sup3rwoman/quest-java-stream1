@@ -1,3 +1,5 @@
+package quests;
+
 public class Hero {
 
     // attributs

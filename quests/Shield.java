@@ -1,3 +1,5 @@
+package quests;
+
 import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -17,16 +19,21 @@ public class Shield {
         heroes.add(new Hero("Hulk", 49, true));
         heroes.add(new Hero("Doctor Strange", 42, false));
 
-        List<Hero> elders;
-        // TODO 1 : filter heroes in order to found heroes older than 59
+        //filters heroes in order to found heroes older than 59
+        //Use of a Stream in 3 stages:
+        List<Hero> elders = heroes.stream()             //1. SOURCE: list of heroes
+                .filter(item -> item.getAge() >= 60)    //2. INTERMEDIATE: filter - keep or not (expects Predicate as an argument)
+                .collect(Collectors.toList());          //3. TERMINAL: collect - return result in form of a list
 
         System.out.println("\nElders:");
         for (Hero elder : elders) {
             System.out.println(elder.getName());
         }
 
-        List<Hero> intolerants;
-        // TODO 2 : filter heroes in order to found heroes that are gluten intolerants
+        //filter heroes in order to found heroes that are gluten intolerants
+        List<Hero> intolerants = heroes.stream()
+                .filter(item -> item.isGlutenIntolerant())
+                .collect(Collectors.toList());
 
         System.out.println("\nGluten intolerants:");
         for (Hero intolerant : intolerants) {
