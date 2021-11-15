@@ -22,7 +22,7 @@ public class Shield {
         //filters heroes in order to found heroes older than 59
         //Use of a Stream in 3 stages:
         List<Hero> elders = heroes.stream()             //1. SOURCE: list of heroes
-                .filter(item -> item.getAge() >= 60)    //2. INTERMEDIATE: filter - keep or not (expects Predicate as an argument)
+                .filter(item -> item.getAge() > 59)    //2. INTERMEDIATE: filter - keep or not (expects Predicate as an argument)
                 .collect(Collectors.toList());          //3. TERMINAL: collect - return result in form of a list
         //Predicate = functional interface, returns a value that is either true or false
         //can be used as assignment target for lambda expression or method reference
